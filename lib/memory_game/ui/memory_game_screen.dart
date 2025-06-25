@@ -4,6 +4,7 @@ import 'package:space_memory_flutter/memory_game/bloc/memory_game_bloc.dart';
 import 'package:space_memory_flutter/memory_game/bloc/memory_game_event.dart';
 import 'package:space_memory_flutter/memory_game/bloc/memory_game_state.dart';
 import 'package:space_memory_flutter/shared/enum/game_difficulty.dart';
+import 'package:space_memory_flutter/shared/ui/confetti_explosion.dart';
 
 class MemoryGame extends StatelessWidget {
   const MemoryGame({super.key, required this.difficulty});
@@ -51,47 +52,46 @@ class MemoryGame extends StatelessWidget {
         body: BlocBuilder<MemoryGameBloc, MemoryGameState>(
           builder: (context, state) {
             final cards = state.cards;
-
-            if (cards.isEmpty) {
-              return const Center(child: CircularProgressIndicator());
-            }
-
-            return GridView.builder(
-              padding: const EdgeInsets.all(16),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
-              ),
-              itemCount: cards.length,
-              itemBuilder: (context, index) {
-                final card = cards[index];
-                return AspectRatio(
-                  aspectRatio: 1,
-                  child: GestureDetector(
-                    onTap: () {
-                      context.read<MemoryGameBloc>().add(FlipCard(index));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color:
-                            card.isMatched
-                                ? Colors.grey.shade300
-                                : Colors.blue.shade100,
-                        borderRadius: BorderRadius.circular(24),
-                        border: Border.all(color: Colors.black12),
-                      ),
-                      child: Center(
-                        child:
-                            card.isFlipped || card.isMatched
-                                ? Image.asset(card.imageAssetPath)
-                                : Image.asset(maskCard)
+            if (state.hasWon) {
+              return Stack(children: [ConfettiExplosion(), Text('Won!')]);
+            } else {
+              return GridView.builder(
+                padding: const EdgeInsets.all(16),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 12,
+                ),
+                itemCount: cards.length,
+                itemBuilder: (context, index) {
+                  final card = cards[index];
+                  return AspectRatio(
+                    aspectRatio: 1,
+                    child: GestureDetector(
+                      onTap: () {
+                        context.read<MemoryGameBloc>().add(FlipCard(index));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color:
+                              card.isMatched
+                                  ? Colors.grey.shade300
+                                  : Colors.blue.shade100,
+                          borderRadius: BorderRadius.circular(24),
+                          border: Border.all(color: Colors.black12),
+                        ),
+                        child: Center(
+                          child:
+                              card.isFlipped || card.isMatched
+                                  ? Image.asset(card.imageAssetPath)
+                                  : Image.asset(maskCard),
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-            );
+                  );
+                },
+              );
+            }
           },
         ),
       ),

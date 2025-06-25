@@ -46,7 +46,9 @@ class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
         cards[index] = cards[index].copyWith(isFlipped: false);
       }
 
-      emit(MemoryGameState(cards: cards));
+      final allMatched = cards.every((card) => card.isMatched);
+
+      emit(MemoryGameState(cards: cards, hasWon: allMatched));
     }
   }
 }
