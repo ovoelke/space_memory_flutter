@@ -8,9 +8,10 @@ Future<void> main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en', 'US'), Locale('de', 'DE')],
+      supportedLocales: [Locale('en'), Locale('de')],
       path: 'assets/translations',
-      fallbackLocale: Locale('en', 'US'),
+      fallbackLocale: Locale('en'),
+      startLocale: Locale('de'),
       child: MyApp(),
     ),
   );

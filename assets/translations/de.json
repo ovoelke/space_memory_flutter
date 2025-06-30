@@ -1,6 +1,11 @@
 {
   "title": "Space Memory",
+  "home": {
+    "start": "Start",
+    "highscores": "Highscores"
+  },
   "difficulty": {
+    "dialog_title": "Schwierigkeitsgrad wählen",
     "easy": "Einfach",
     "medium": "Mittel",
     "hard": "Schwer"

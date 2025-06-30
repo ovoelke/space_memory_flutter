@@ -1,0 +1,13 @@
+{
+  "title": "Space Memory",
+  "home": {
+    "start": "Start",
+    "highscores": "Highscores"
+  },
+  "difficulty": {
+    "dialog_title": "Select level of difficulty",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  }
+}
