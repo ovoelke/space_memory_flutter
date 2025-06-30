@@ -18,14 +18,12 @@ class MemoryGame extends StatelessWidget {
       GameDifficulty.easy => [
         'assets/images/ic_tile_a.png',
         'assets/images/ic_tile_b.png',
-        'assets/images/ic_tile_c.png',
       ],
       GameDifficulty.medium => [
         'assets/images/ic_tile_a.png',
         'assets/images/ic_tile_b.png',
         'assets/images/ic_tile_c.png',
         'assets/images/ic_tile_d.png',
-        'assets/images/ic_tile_e.png',
       ],
       GameDifficulty.hard => [
         'assets/images/ic_tile_a.png',
@@ -56,9 +54,9 @@ class MemoryGame extends StatelessWidget {
               return Stack(children: [ConfettiExplosion(), Text('Won!')]);
             } else {
               return GridView.builder(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(48),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
+                  crossAxisCount: 2,
                   mainAxisSpacing: 12,
                   crossAxisSpacing: 12,
                 ),
