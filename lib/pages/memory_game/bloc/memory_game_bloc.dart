@@ -16,7 +16,10 @@ class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
     emit(MemoryGameState(cards: cards));
   }
 
-  Future<void> _onFlipCard(FlipCard event, Emitter<MemoryGameState> emit) async {
+  Future<void> _onFlipCard(
+    FlipCard event,
+    Emitter<MemoryGameState> emit,
+  ) async {
     final index = event.index;
     final cards = List<MemoryCard>.from(state.cards);
 
