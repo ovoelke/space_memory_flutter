@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:space_memory_flutter/memory_game/ui/memory_game_screen.dart';
+import 'package:space_memory_flutter/pages/memory_game/ui/memory_game_page.dart';
 import 'package:space_memory_flutter/shared/enum/game_difficulty.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,6 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             spacing: 12,
             children: [
-              Text('test'),
               ElevatedButton(
                 key: const Key("button_start"),
                 onPressed: () => onStartPressed(context),
@@ -57,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder:
                                       (context) =>
-                                          MemoryGame(difficulty: difficulty),
+                                          MemoryGamePage(difficulty: difficulty),
                                 ),
                               ),
                             }),
@@ -73,7 +72,7 @@ class HomeScreen extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => MemoryGame(difficulty: difficulty),
+          builder: (context) => MemoryGamePage(difficulty: difficulty),
         ),
       );
 

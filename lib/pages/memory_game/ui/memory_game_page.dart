@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:space_memory_flutter/memory_game/bloc/memory_game_bloc.dart';
-import 'package:space_memory_flutter/memory_game/bloc/memory_game_event.dart';
-import 'package:space_memory_flutter/memory_game/bloc/memory_game_state.dart';
+import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_bloc.dart';
+import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_event.dart';
+import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_state.dart';
 import 'package:space_memory_flutter/shared/enum/game_difficulty.dart';
 import 'package:space_memory_flutter/shared/ui/confetti_explosion.dart';
 
-class MemoryGame extends StatelessWidget {
-  const MemoryGame({super.key, required this.difficulty});
+class MemoryGamePage extends StatelessWidget {
+  const MemoryGamePage({super.key, required this.difficulty});
 
   final GameDifficulty difficulty;
 

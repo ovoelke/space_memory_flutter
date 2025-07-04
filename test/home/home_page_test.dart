@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:space_memory_flutter/home/ui/home_screen.dart';
+import 'package:space_memory_flutter/pages/home/ui/home_page.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +15,8 @@ void main() {
         path: 'assets/translations',
         fallbackLocale: Locale('en'),
         startLocale: Locale('en'),
-        child: MaterialApp(home: Scaffold(body: HomeScreen())),
+        useOnlyLangCode: true,
+        child: MaterialApp(home: Scaffold(body: HomePage())),
       ),
     );
 

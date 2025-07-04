@@ -1,4 +1,4 @@
-import '../model/memory_card.dart';
+import 'package:space_memory_flutter/pages/memory_game/model/memory_card.dart';
 
 class MemoryGameState {
   final List<MemoryCard> cards;

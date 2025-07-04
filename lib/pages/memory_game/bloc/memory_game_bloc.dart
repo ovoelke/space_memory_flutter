@@ -1,8 +1,7 @@
-import 'package:bloc/bloc.dart';
-
-import '../model/memory_card.dart';
-import 'memory_game_event.dart';
-import 'memory_game_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:space_memory_flutter/pages/memory_game/model/memory_card.dart';
+import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_event.dart';
+import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_state.dart';
 
 class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
   MemoryGameBloc() : super(MemoryGameState(cards: [])) {
