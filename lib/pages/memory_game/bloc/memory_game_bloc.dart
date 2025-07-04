@@ -5,18 +5,18 @@ import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_state.da
 
 class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
   MemoryGameBloc() : super(MemoryGameState(cards: [])) {
-    on<InitializeGame>(_onInit);
-    on<FlipCard>(_onFlip);
+    on<InitializeGame>(_onInitializeGame);
+    on<FlipCard>(_onFlipCard);
   }
 
-  void _onInit(InitializeGame event, Emitter<MemoryGameState> emit) {
+  void _onInitializeGame(InitializeGame event, Emitter<MemoryGameState> emit) {
     final images = [...event.images, ...event.images]..shuffle();
     final cards =
         images.map((path) => MemoryCard(imageAssetPath: path)).toList();
     emit(MemoryGameState(cards: cards));
   }
 
-  Future<void> _onFlip(FlipCard event, Emitter<MemoryGameState> emit) async {
+  Future<void> _onFlipCard(FlipCard event, Emitter<MemoryGameState> emit) async {
     final index = event.index;
     final cards = List<MemoryCard>.from(state.cards);
 

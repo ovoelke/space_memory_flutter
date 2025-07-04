@@ -1,9 +1,8 @@
 {
   "title": "Space Memory",
-  "home": {
-    "start": "Start",
-    "highscores": "Highscores"
-  },
+  "start_game": "Start",
+  "highscores": "Highscores",
+  "no_highscores_available": "No highscores available.",
   "difficulty": {
     "dialog_title": "Select level of difficulty",
     "easy": "Easy",

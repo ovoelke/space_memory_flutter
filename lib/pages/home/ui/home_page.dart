@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:space_memory_flutter/pages/highscore/ui/highscore_page.dart';
 import 'package:space_memory_flutter/pages/memory_game/ui/memory_game_page.dart';
 import 'package:space_memory_flutter/shared/enum/game_difficulty.dart';
 
@@ -25,12 +26,12 @@ class HomePage extends StatelessWidget {
               ElevatedButton(
                 key: const Key("button_start"),
                 onPressed: () => onStartPressed(context),
-                child: Text(tr('home.start')),
+                child: Text(tr('start_game')),
               ),
               ElevatedButton(
                 key: const Key("button_highscores"),
-                onPressed: () => onHighscorePressed,
-                child: Text(tr('home.highscores')),
+                onPressed: () => onHighscorePressed(context),
+                child: Text(tr('highscores')),
               ),
             ],
           ),
@@ -55,8 +56,9 @@ class HomePage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder:
-                                      (context) =>
-                                          MemoryGamePage(difficulty: difficulty),
+                                      (context) => MemoryGamePage(
+                                        difficulty: difficulty,
+                                      ),
                                 ),
                               ),
                             }),
@@ -76,9 +78,10 @@ class HomePage extends StatelessWidget {
         ),
       );
 
-  void onHighscorePressed() {
-    if (kDebugMode) {
-      print('TODO: implement!');
-    }
+  void onHighscorePressed(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HighscorePage()),
+    );
   }
 }
