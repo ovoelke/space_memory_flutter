@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class HighscoreListTile extends StatelessWidget {
@@ -17,7 +18,7 @@ class HighscoreListTile extends StatelessWidget {
     return ListTile(
       leading: Text('#$rank'),
       title: Text(name),
-      trailing: Text('$score Punkte'),
+      trailing: Text('points').tr(namedArgs: {'score': '$score'}),
     );
   }
 }

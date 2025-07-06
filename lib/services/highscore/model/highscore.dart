@@ -3,7 +3,7 @@ class Highscore {
   final String playerId;
   final DateTime sessionStart;
   final int score;
-  final int incorrectCount;
+  final int missed;
   final DateTime? sessionEnd;
 
   Highscore(
@@ -12,7 +12,7 @@ class Highscore {
     this.sessionStart, {
     this.sessionEnd,
     this.score = 0,
-    this.incorrectCount = 0,
+    this.missed = 0,
   });
 
   @override
@@ -27,7 +27,7 @@ class Highscore {
     String? playerId,
     DateTime? sessionStart,
     int? score,
-    int? incorrectCount,
+    int? missed,
     DateTime? sessionEnd,
   }) {
     return Highscore(
@@ -35,7 +35,7 @@ class Highscore {
       playerId ?? this.playerId,
       sessionStart ?? this.sessionStart,
       score: score ?? this.score,
-      incorrectCount: incorrectCount ?? this.incorrectCount,
+      missed: missed ?? this.missed,
       sessionEnd: sessionEnd ?? this.sessionEnd,
     );
   }
@@ -45,7 +45,7 @@ class Highscore {
     'playerId': playerId,
     'sessionStart': sessionStart.toIso8601String(),
     'score': score,
-    'incorrectCount': incorrectCount,
+    'incorrectCount': missed,
     'sessionEnd': sessionEnd?.toIso8601String(),
   };
 
@@ -54,7 +54,7 @@ class Highscore {
     json['playerId'],
     DateTime.parse(json['sessionStart']),
     score: json['score'],
-    incorrectCount: json['incorrectCount'],
+    missed: json['incorrectCount'],
     sessionEnd:
         json['sessionEnd'] != null ? DateTime.parse(json['sessionEnd']) : null,
   );

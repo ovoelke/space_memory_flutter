@@ -44,7 +44,7 @@ class HighScoreServiceDebug implements HighscoreService {
         now.subtract(Duration(hours: 1, minutes: 2)),
         score: 100,
         sessionEnd: DateTime.now().subtract(Duration(hours: 1)),
-        incorrectCount: 3,
+        missed: 3,
       ),
       Highscore(
         'Ben Zin',
@@ -52,7 +52,7 @@ class HighScoreServiceDebug implements HighscoreService {
         now.subtract(Duration(hours: 2, minutes: 2)),
         score: 200,
         sessionEnd: DateTime.now().subtract(Duration(hours: 2)),
-        incorrectCount: 2,
+        missed: 2,
       ),
       Highscore(
         'Chris Tus',
@@ -60,7 +60,7 @@ class HighScoreServiceDebug implements HighscoreService {
         now.subtract(Duration(hours: 3, minutes: 2)),
         score: 300,
         sessionEnd: DateTime.now().subtract(Duration(hours: 3)),
-        incorrectCount: 2,
+        missed: 2,
       ),
     ];
 
@@ -86,7 +86,7 @@ class HighScoreServiceDebug implements HighscoreService {
     }
     _session = _session!.copyWith(sessionEnd: DateTime.now());
 
-    _highscores = {..._highscores, _session!}.toList();
+    _highscores.add(_session!);
   }
 
   /// Starts a new session for the debug player.
@@ -100,26 +100,36 @@ class HighScoreServiceDebug implements HighscoreService {
     _session = Highscore(debugPlayerName, debugPlayerId, DateTime.now());
   }
 
-  /// Updates the current session with score and/or incorrect count increments.
+  /// Updates the current session by adding missed attempts.
   ///
   /// Throws if no session exists.
   @override
-  Future<void> sessionUpdate(
-    int? scoreIncrease,
-    int? incorrectCountIncrease,
-  ) async {
+  Highscore increaseMissAttempts() {
     if (_session == null) {
       throw Exception('There is no session to update.');
     }
-    _session = _session!.copyWith(
-      score:
-          scoreIncrease != null
-              ? _session!.score + scoreIncrease
-              : _session!.score,
-      incorrectCount:
-          incorrectCountIncrease != null
-              ? _session!.incorrectCount + incorrectCountIncrease
-              : _session!.incorrectCount,
-    );
+    return _session = _session!.copyWith(missed: _session!.missed + 1);
+  }
+
+  /// Updates the current session by adding points, depending on attempts.
+  /// Amount of missed attempts will be reduced to zero.
+  ///
+  /// Throws if no session exists.
+  @override
+  Highscore increaseSessionPoints() {
+    if (_session == null) {
+      throw Exception('There is no session to update.');
+    }
+    int score = _session!.score;
+    if (_session!.missed == 0) {
+      score += 50;
+    } else if (_session!.missed == 1) {
+      score += 25;
+    } else if (_session!.missed == 2) {
+      score += 15;
+    } else {
+      score += 5;
+    }
+    return _session = _session!.copyWith(missed: 0, score: score);
   }
 }

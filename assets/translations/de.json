@@ -2,11 +2,17 @@
   "title": "Space Memory",
   "start_game": "Start",
   "highscores": "Highscores",
+  "points": "{score} Punkte",
   "no_highscores_available": "Keine Highscores verfügbar.",
   "difficulty": {
     "dialog_title": "Schwierigkeitsgrad wählen",
     "easy": "Einfach",
     "medium": "Mittel",
     "hard": "Schwer"
+  },
+  "memory_game": {
+    "points": "Punkte: {score}",
+    "attempts": "Versuche: {missed}",
+    "won": "Du hast gewonnen!"
   }
 }

@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:space_memory_flutter/pages/highscore/ui/highscore_page.dart';
 import 'package:space_memory_flutter/pages/memory_game/ui/memory_game_page.dart';

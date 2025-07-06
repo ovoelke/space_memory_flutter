@@ -11,5 +11,7 @@ abstract class HighscoreService {
 
   Future<void> sessionStart();
 
-  Future<void> sessionUpdate(int scoreIncrease, int incorrectCountIncrease);
+  Highscore increaseSessionPoints();
+
+  Highscore increaseMissAttempts();
 }
