@@ -58,7 +58,7 @@ class MemoryGamePage extends StatelessWidget {
                     alignment: Alignment.center,
                     children: [
                       ConfettiExplosion(),
-                      Text('memory_game.won').tr(),
+                      Text('memory_game_page.won').tr(),
                     ],
                   ),
                 ),
@@ -71,11 +71,11 @@ class MemoryGamePage extends StatelessWidget {
                     children: [
                       Spacer(),
                       Text(
-                        'memory_game.points',
+                        'memory_game_page.points',
                       ).tr(namedArgs: {'score': '${state.score}'}),
                       Spacer(),
                       Text(
-                        'memory_game.attempts',
+                        'memory_game_page.attempts',
                       ).tr(namedArgs: {'missed': '${state.missed}'}),
                       Spacer(),
                     ],
