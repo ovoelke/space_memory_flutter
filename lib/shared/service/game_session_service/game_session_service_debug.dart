@@ -1,14 +1,14 @@
-import 'package:space_memory_flutter/services/highscore/highscore_service.dart';
-import 'package:space_memory_flutter/services/highscore/model/highscore.dart';
+import 'package:space_memory_flutter/shared/model/highscore.dart';
+import 'package:space_memory_flutter/shared/service/game_session_service/game_session_service.dart';
 
-/// A mock implementation of [HighscoreService] for debug or development mode.
+/// A mock implementation of [GameSessionService] for debug or development mode.
 ///
 /// This service simulates delayed API interactions and stores highscore data in memory.
 /// It provides fake highscore entries and allows for local session tracking
 /// without persistent storage or real backend integration.
 ///
 /// Useful for testing UI and logic without needing a real backend.
-class HighScoreServiceDebug implements HighscoreService {
+class GameSessionServiceDebug implements GameSessionService {
   /// Simulated delay for API calls (in milliseconds).
   static const debugApiDelayMilliseconds = 1200;
 
@@ -30,11 +30,11 @@ class HighScoreServiceDebug implements HighscoreService {
   List<Highscore> get highscores => _highscores;
 
   /// Private constructor – use [create] to instantiate.
-  HighScoreServiceDebug._();
+  GameSessionServiceDebug._();
 
   /// Creates and initializes a new debug service instance with fake data.
-  static Future<HighScoreServiceDebug> create() async {
-    final instance = HighScoreServiceDebug._();
+  static Future<GameSessionServiceDebug> create() async {
+    final instance = GameSessionServiceDebug._();
 
     final now = DateTime.now();
     instance._highscores = [

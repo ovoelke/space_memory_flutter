@@ -1,4 +1,4 @@
-import 'package:space_memory_flutter/pages/highscore/model/highscore_list_data.dart';
+import 'package:space_memory_flutter/page/highscore/model/highscore_list_data.dart';
 
 class HighscoreState {
   final List<HighscoreListData>? listData;

@@ -5,9 +5,9 @@ enum GameDifficulty { easy, medium, hard }
 extension GameDifficultyExtension on GameDifficulty {
   String get label {
     return switch (this) {
-      GameDifficulty.easy => tr('difficulty.easy'),
-      GameDifficulty.medium => tr('difficulty.medium'),
-      GameDifficulty.hard => tr('difficulty.hard'),
+      GameDifficulty.easy => tr('shared.difficulty.easy'),
+      GameDifficulty.medium => tr('shared.difficulty.medium'),
+      GameDifficulty.hard => tr('shared.difficulty.hard'),
     };
   }
 }

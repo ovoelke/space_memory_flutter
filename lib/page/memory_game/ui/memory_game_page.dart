@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_bloc.dart';
-import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_event.dart';
-import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_state.dart';
+import 'package:space_memory_flutter/page/memory_game/bloc/memory_game_bloc.dart';
+import 'package:space_memory_flutter/page/memory_game/bloc/memory_game_event.dart';
+import 'package:space_memory_flutter/page/memory_game/bloc/memory_game_state.dart';
 import 'package:space_memory_flutter/shared/enum/game_difficulty.dart';
 import 'package:space_memory_flutter/shared/ui/confetti_explosion.dart';
 

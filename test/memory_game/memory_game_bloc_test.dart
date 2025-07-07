@@ -1,9 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_bloc.dart';
-import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_event.dart';
-import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_state.dart';
-
+import 'package:space_memory_flutter/page/memory_game/bloc/memory_game_bloc.dart';
+import 'package:space_memory_flutter/page/memory_game/bloc/memory_game_event.dart';
+import 'package:space_memory_flutter/page/memory_game/bloc/memory_game_state.dart';
 void main() {
   group('MemoryGameBloc', () {
     final imagePaths = ['a.png', 'b.png', 'c.png'];

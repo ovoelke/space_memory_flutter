@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:space_memory_flutter/pages/home/ui/home_page.dart';
-import 'package:space_memory_flutter/services/highscore/highscore_service.dart';
-import 'package:space_memory_flutter/services/highscore/highscore_service_debug.dart';
+import 'package:space_memory_flutter/page/home/ui/home_page.dart';
+import 'package:space_memory_flutter/shared/service/game_session_service/game_session_service.dart';
+import 'package:space_memory_flutter/shared/service/game_session_service/game_session_service_debug.dart';
 
 const appSupportedLocals = [Locale('en'), Locale('de')];
 
@@ -27,8 +27,8 @@ Future<void> main() async {
 
 Future<void> registerServices() async {
   final serviceLocator = GetIt.I;
-  serviceLocator.registerSingletonAsync<HighscoreService>(
-    () => HighScoreServiceDebug.create(),
+  serviceLocator.registerSingletonAsync<GameSessionService>(
+    () => GameSessionServiceDebug.create(),
   );
   await serviceLocator.allReady();
 }

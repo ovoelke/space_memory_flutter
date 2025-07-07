@@ -4,15 +4,22 @@
   "highscores": "Highscores",
   "points": "{score} Points",
   "no_highscores_available": "No highscores available.",
-  "difficulty": {
-    "dialog_title": "Select level of difficulty",
-    "easy": "Easy",
-    "medium": "Medium",
-    "hard": "Hard"
+  "home_page": {
+    "title": "Space Memory",
+    "start_button": "Start Game",
+    "highscores_button": "Highscores",
+    "difficulty_dialog_title": "Schwierigkeitsgrad wählen"
   },
-  "memory_game": {
+  "memory_game_page": {
     "points": "Points: {score}",
     "attempts": "Attempts: {missed}",
     "won": "You have won!"
+  },
+  "shared": {
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    }
   }
 }

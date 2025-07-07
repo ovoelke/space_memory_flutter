@@ -1,15 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:space_memory_flutter/pages/memory_game/model/memory_card.dart';
-import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_event.dart';
-import 'package:space_memory_flutter/pages/memory_game/bloc/memory_game_state.dart';
-import 'package:space_memory_flutter/services/highscore/highscore_service.dart';
+import 'package:space_memory_flutter/page/memory_game/bloc/memory_game_event.dart';
+import 'package:space_memory_flutter/page/memory_game/bloc/memory_game_state.dart';
+import 'package:space_memory_flutter/page/memory_game/model/memory_card.dart';
+import 'package:space_memory_flutter/shared/service/game_session_service/game_session_service.dart';
+
 
 class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
-  final HighscoreService _highscoreService;
+  final GameSessionService _gameSessionService;
 
   MemoryGameBloc()
-    : _highscoreService = GetIt.I<HighscoreService>(),
+    : _gameSessionService = GetIt.I<GameSessionService>(),
       super(MemoryGameState(cards: [])) {
     on<InitializeGame>(_onInitializeGame);
     on<FlipCard>(_onFlipCard);
@@ -20,7 +21,7 @@ class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
     Emitter<MemoryGameState> emit,
   ) async {
     emit(state.copyWith(isBusy: true));
-    await _highscoreService.sessionStart();
+    await _gameSessionService.sessionStart();
     final images = [...event.images, ...event.images]..shuffle();
     final cards =
         images.map((path) => MemoryCard(imageAssetPath: path)).toList();
@@ -58,11 +59,11 @@ class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
         cards[firstIndex].imageAssetPath == cards[index].imageAssetPath;
 
     if (match) {
-      _highscoreService.increaseSessionPoints();
+      _gameSessionService.increaseSessionPoints();
       cards[firstIndex] = cards[firstIndex].copyWith(isMatched: true);
       cards[index] = cards[index].copyWith(isMatched: true);
     } else {
-      _highscoreService.increaseMissAttempts();
+      _gameSessionService.increaseMissAttempts();
       await Future.delayed(const Duration(seconds: 1));
       cards[firstIndex] = cards[firstIndex].copyWith(isFlipped: false);
       cards[index] = cards[index].copyWith(isFlipped: false);
@@ -70,7 +71,7 @@ class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
 
     final won = cards.every((card) => card.isMatched);
     if (won) {
-      await _highscoreService.sessionEnd();
+      await _gameSessionService.sessionEnd();
     }
     emit(
       state.copyWith(
@@ -78,8 +79,8 @@ class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
         isBusy: false,
         firstFlippedIndex: -1,
         hasWon: won,
-        score: _highscoreService.session?.score,
-        missed: _highscoreService.session?.missed,
+        score: _gameSessionService.session?.score,
+        missed: _gameSessionService.session?.missed,
       ),
     );
   }

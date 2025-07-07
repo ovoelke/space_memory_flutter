@@ -1,6 +1,6 @@
-import 'package:space_memory_flutter/services/highscore/model/highscore.dart';
+import 'package:space_memory_flutter/shared/model/highscore.dart';
 
-abstract class HighscoreService {
+abstract class GameSessionService {
   Highscore? get session;
 
   List<Highscore> get highscores;
